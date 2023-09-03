@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag mqtt-gateway:$(date +%s)
+      run: docker build . --file Dockerfile --tag nowzarifarhad/mqtt-gateway:$(date +%s)
+    - name: Docker login
+      run: docker login -u nowzarifarhad -p "Pesarekhoob1@"
+    - name: Publish the Docker image
+      run: docker push nowzarifarhad/mqtt-gateway:$(date +%s)
