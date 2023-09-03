@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: mqtt-gateway
-          image: nowzarifarhad/mqtt-gateway:1.0.1
+          image: nowzarifarhad/mqtt-gateway:1.0.2
           ports:
             - containerPort: 5108
           env:
