@@ -14,9 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set env
+      run: EXPORT DATE=$(date +%s)
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nowzarifarhad/mqtt-gateway:$(date +%s)
+      run: docker build . --file Dockerfile --tag nowzarifarhad/mqtt-gateway:$DATE
     - name: Docker login
       run: docker login -u nowzarifarhad -p "Pesarekhoob1@"
     - name: Publish the Docker image
-      run: docker push nowzarifarhad/mqtt-gateway:$(date +%s)
+      run: docker push nowzarifarhad/mqtt-gateway:$DATE
