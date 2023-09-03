@@ -17,8 +17,8 @@ public class MqttController : ControllerBase
         _mqttService = mqttService;
     }
 
-    [HttpPost("{topic}")]
-    public async Task SendMessage([FromRoute] string topic, object message)
+    [HttpPost]
+    public async Task SendMessage([FromQuery] string topic, object message)
     {
         topic = HttpUtility.UrlDecode(topic);
         var mqttMessage = new MqttApplicationMessageBuilder().WithTopic(topic).WithPayload(JsonSerializer.Serialize(message)).Build();
