@@ -96,6 +96,26 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/MqttGateway.csproj"
             }
+        },
+        {
+            "label": "bridge-to-kubernetes.resource",
+            "type": "bridge-to-kubernetes.resource",
+            "resource": "mqtt-gateway-78b969fdc4",
+            "resourceType": "pod",
+            "ports": [
+                5002
+            ],
+            "targetCluster": "cluster.local",
+            "targetNamespace": "drone",
+            "useKubernetesServiceEnvironmentVariables": false
+        },
+        {
+            "label": "bridge-to-kubernetes.compound",
+            "dependsOn": [
+                "bridge-to-kubernetes.resource",
+                "build"
+            ],
+            "dependsOrder": "sequence"
         }
     ]
 }
